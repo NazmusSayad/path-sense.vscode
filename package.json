@@ -1,0 +1,47 @@
+{
+  "name": "super-path",
+  "displayName": "super-path",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.92.0"
+  },
+  "scripts": {
+    "dev": "tsc --watch"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./dist/index.js",
+  "activationEvents": [
+    "onLanguage:javascript",
+    "onLanguage:typescript",
+    "onLanguage:javascriptreact",
+    "onLanguage:typescriptreact"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "javascript",
+        "extensions": [
+          ".js",
+          ".cjs",
+          ".mjs",
+          ".jsx"
+        ]
+      },
+      {
+        "id": "typescript",
+        "extensions": [
+          ".ts",
+          ".tsx"
+        ]
+      }
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "20.x",
+    "@types/vscode": "^1.92.0",
+    "typescript": "^5.5.4"
+  }
+}
