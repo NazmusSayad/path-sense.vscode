@@ -1,13 +1,14 @@
 {
-  "name": "super-path",
-  "displayName": "super-path",
+  "name": "path-sense",
+  "displayName": "path-sense",
   "description": "",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.92.0"
   },
   "scripts": {
-    "dev": "tsc --watch"
+    "tsc-watch": "tsc --watch",
+    "build": "node ./build.cjs"
   },
   "categories": [
     "Other"
@@ -37,11 +38,42 @@
           ".tsx"
         ]
       }
-    ]
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Path Sense Configuration",
+      "properties": {
+        "path-sense.mappings": {
+          "type": "object",
+          "description": "Mapping of paths for Path Sense extension",
+          "default": {},
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "path-sense.remove-extensions": {
+          "type": "array",
+          "description": "Array of extensions to remove",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            ".js",
+            ".jsx",
+            ".ts",
+            ".tsx"
+          ]
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "typescript": "^5.5.4"
   },
   "devDependencies": {
     "@types/node": "20.x",
     "@types/vscode": "^1.92.0",
-    "typescript": "^5.5.4"
+    "cross-spawn": "^7.0.3",
+    "vsce": "^2.15.0"
   }
 }
