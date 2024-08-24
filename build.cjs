@@ -10,7 +10,7 @@ const tscResult = spawn.sync('tsc', { stdio: 'inherit', shell: true })
 if (tscResult.status !== 0) process.exit(tscResult.status)
 
 console.log('Building package...')
-spawn.sync('vsce', ['package', '--allow-missing-repository'], {
+spawn.sync('vsce', ['package'], {
   stdio: 'inherit',
   shell: true,
 })

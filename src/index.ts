@@ -1,16 +1,13 @@
 import * as vscode from 'vscode'
-import provideCompletionItems from './completion'
+import { TSConfigStore } from './TSConfigStore'
+import { CompletionProvider } from './CompletionProvider'
+import { VSCodeConfigStore } from './VSCodeConfigStore'
 
 export function activate(vscodeContext: vscode.ExtensionContext) {
   console.clear()
 
-  vscode.workspace.onDidSaveTextDocument((document) => {
-    console.log(document.fileName)
-  })
-
-  vscode.workspace.onDidDeleteFiles((event) => {
-    console.log(event.files)
-  })
+  const tsconfigPathStore = new TSConfigStore()
+  const vscodeConfigStore = new VSCodeConfigStore()
 
   const provider = vscode.languages.registerCompletionItemProvider(
     ['javascript', 'typescript', 'javascriptreact', 'typescriptreact'],
@@ -30,19 +27,19 @@ export function activate(vscodeContext: vscode.ExtensionContext) {
         }
 
         if (triggerCharacter === '/') {
-          return provideCompletionItems(vscodeContext, document, position)
+          return new CompletionProvider(
+            vscodeConfigStore.get(),
+            tsconfigPathStore.get(document.uri.fsPath),
+            vscodeContext,
+            context,
+            document,
+            position
+          ).provideCompletionItems()
         }
       },
     },
     '/'
   )
-
-  const config = vscode.workspace.getConfiguration('path-sense')
-  const mappings: Record<string, string> = config.get('mappings')
-  const removeExtensions: string[] = config.get('remove-extensions')
-
-  console.log({ ...mappings })
-  console.log([...removeExtensions])
 
   vscodeContext.subscriptions.push(provider)
 }

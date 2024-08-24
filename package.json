@@ -2,11 +2,11 @@
   "name": "path-sense",
   "displayName": "path-sense",
   "publisher": "NazmusSayad",
-  "description": "",
-  "version": "0.0.1",
+  "description": "This extension helps you to navigate to the file path in the editor",
+  "version": "0.0.2",
   "main": "./dist/index.js",
   "scripts": {
-    "tsc-watch": "tsc --watch",
+    "dev": "tsc --watch",
     "build": "node ./build.cjs"
   },
   "dependencies": {
@@ -58,7 +58,7 @@
             "type": "string"
           }
         },
-        "path-sense.remove-extensions": {
+        "path-sense.removeExtensions": {
           "type": "array",
           "description": "Array of extensions to remove",
           "items": {
@@ -73,6 +73,10 @@
         }
       }
     }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NazmusSayad/path-sense.vscode"
   },
   "engines": {
     "vscode": "^1.92.0"

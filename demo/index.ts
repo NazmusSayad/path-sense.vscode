@@ -1,1 +1,1 @@
-"./src/folder-1/child-folder/child"
+import {} from '../src/CompletionProvider'
