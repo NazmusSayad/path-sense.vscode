@@ -1,19 +1,26 @@
 {
   "name": "path-sense",
   "displayName": "path-sense",
+  "publisher": "NazmusSayad",
   "description": "",
   "version": "0.0.1",
-  "engines": {
-    "vscode": "^1.92.0"
-  },
+  "main": "./dist/index.js",
   "scripts": {
     "tsc-watch": "tsc --watch",
     "build": "node ./build.cjs"
   },
+  "dependencies": {
+    "typescript": "^5.5.4"
+  },
+  "devDependencies": {
+    "@types/node": "20.x",
+    "@types/vscode": "^1.92.0",
+    "cross-spawn": "^7.0.3",
+    "vsce": "^2.15.0"
+  },
   "categories": [
     "Other"
   ],
-  "main": "./dist/index.js",
   "activationEvents": [
     "onLanguage:javascript",
     "onLanguage:typescript",
@@ -67,13 +74,7 @@
       }
     }
   },
-  "dependencies": {
-    "typescript": "^5.5.4"
-  },
-  "devDependencies": {
-    "@types/node": "20.x",
-    "@types/vscode": "^1.92.0",
-    "cross-spawn": "^7.0.3",
-    "vsce": "^2.15.0"
+  "engines": {
+    "vscode": "^1.92.0"
   }
 }
